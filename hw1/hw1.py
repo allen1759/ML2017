@@ -92,6 +92,7 @@ if __name__ == "__main__":
         y = np.dot(trainX, weight)
         L = y - trainY
         gra = 2 * np.dot(trainX.T, L)
+#        gra = 2 * np.dot(trainX.T, L) + 2 * 0.01 * weight
         adasum += gra ** 2
         ada = np.sqrt(adasum)
         weight -= lr * gra / ada
