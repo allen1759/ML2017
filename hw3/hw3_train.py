@@ -90,7 +90,7 @@ if __name__ == "__main__":
     # data pre-processing
     trainX, trainY = LoadTrainData(sys.argv[1])
 
-    trainX, input_shape = FormatData(trainX, testX)
+    trainX, input_shape = FormatData(trainX)
     
     samples = int(trainX.shape[0] * 0.85)
     x_train = trainX[:samples, :, :, :]
@@ -150,8 +150,9 @@ if __name__ == "__main__":
     
 # %% fit model
 
-#    if not os.path.isdir(model_path):
-#        os.mkdir(model_path)
+    model_path = 'out'
+    if not os.path.isdir(model_path):
+        os.mkdir(model_path)
 
     history = History()
     tbCallBack = keras.callbacks.TensorBoard(log_dir=model_path+'/tb', histogram_freq=0, write_graph=True, write_images=True)
