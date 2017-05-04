@@ -88,7 +88,7 @@ class History(keras.callbacks.Callback):
 if __name__ == "__main__":
 
     # data pre-processing
-    trainX, trainY = LoadTrainData(sys.argv[2])
+    trainX, trainY = LoadTrainData(sys.argv[1])
 
     trainX, input_shape = FormatData(trainX, testX)
     
