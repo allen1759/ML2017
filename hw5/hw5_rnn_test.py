@@ -5,8 +5,8 @@ Created on Wed May 25 10:04:45 2017
 @author: Allen
 """
 
-import pickle
 import sys
+import pickle
 import keras.backend as K 
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
@@ -16,20 +16,16 @@ from keras.layers import GRU
 from keras.layers.embeddings import Embedding
 from keras.optimizers import Adam
 
+test_path = sys.argv[1]
+output_path= sys.argv[2]
 """
 test_path = 'test_data.csv'
 output_path = 'output_rnn_test.csv'
 """
-test_path = sys.argv[1]
-output_path= sys.argv[2]
-
 #####################
 ###   parameter   ###
 #####################
-#split_ratio = 0.05
 embedding_dim = 100
-#nb_epoch = 1000
-#batch_size = 64
 
 ################
 ###   Util   ###

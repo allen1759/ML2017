@@ -1,7 +1,12 @@
-from __future__ import print_function
-import numpy as np
-import json
+# -*- coding: utf-8 -*-
+"""
+Created on Wed May 25 10:04:45 2017
+
+@author: Allen
+"""
+
 import sys
+import numpy as np
 import keras.backend as K 
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
@@ -206,29 +211,16 @@ if __name__=='__main__':
                                  save_weights_only=True,
                                  monitor='val_f1_score',
                                  mode='max')
-    """
+
     hist = model.fit(X_train, Y_train, 
                      validation_data=(X_val, Y_val),
                      epochs=nb_epoch, 
                      batch_size=batch_size,
                      callbacks=[earlystopping,checkpoint])
-    """
-# %%
-    ######## new train ##################
-    word_index = tokenizer.word_index
-    outfile = open('word_index.json','w', encoding='utf-8') 
-    json.dump(word_index,outfile,ensure_ascii=False)  
-    outfile.write('\n')
-    outfile.close()
 
 # %%
-    f = open('word_index.json','r') 
-    for l in f:
-    	word_index=json.loads(l)
-    tokenizer.word_index = word_index
-    f.close()
     
-    model.load_weights('best_50471_5751.hdf5')
+    model.load_weights('best.hdf5')
     
     Y_pred = model.predict(test_sequences)
     
